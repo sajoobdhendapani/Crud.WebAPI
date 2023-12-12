@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DBScript\**" />
+    <EmbeddedResource Remove="DBScript\**" />
+    <None Remove="DBScript\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DapperDataAccessLayer\DapperDataAccessLayer.csproj" />
   </ItemGroup>
 

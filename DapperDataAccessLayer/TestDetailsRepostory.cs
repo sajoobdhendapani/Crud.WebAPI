@@ -11,11 +11,12 @@ namespace DapperDataAccessLayer
 {
     public class TestDetailsRepostory:ITestDetailsRepostory
     {
+      public string connectionString = "Data source=DESKTOP-CC47JG8\\SQLEXPRESS;initial catalog=Batch7;user id=sa;password=Anaiyaan@123;";
+
         public TestDetail InsertSP(TestDetail details)
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-CC47JG8\\SQLEXPRESS;initial catalog=Batch7;user id=sa;password=Anaiyaan@123;";
 
                 var con = new SqlConnection(connectionString);
                 con.Open();
@@ -39,8 +40,7 @@ namespace DapperDataAccessLayer
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-CC47JG8\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+               
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var TestDetail = con.Query<TestDetail>($"exec ReadAllTestDetails ");
@@ -65,8 +65,7 @@ namespace DapperDataAccessLayer
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-CC47JG8\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+                
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var TestDetails = con.QueryFirstOrDefault<TestDetail>($"exec DeleteTestDetails @Id={Id}");
@@ -83,16 +82,15 @@ namespace DapperDataAccessLayer
             }
 
         }
-        public TestDetail UpdateSP(long Id, TestDetail UptdDetails)
+        public TestDetail UpdateSP(long Id, TestDetail UpdtDetails)
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-CC47JG8\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var TestDetails = con.QueryFirstOrDefault<TestDetail>($"exec UpdateTestDetails @id={Id}, @Name='{UptdDetails.Name}',@Number={UptdDetails.Number},@Duration={UptdDetails.Duration},@Score={UptdDetails.Score},@StartDate='{UptdDetails.StartDate.ToString("MM-dd-yyyy")}'");
+                var TestDetails = con.QueryFirstOrDefault<TestDetail>($"exec UpdateTestDetails @id={Id}, @Name='{UpdtDetails.Name}',@Number={UpdtDetails.Number},@Duration={UpdtDetails.Duration},@Score={UpdtDetails.Score},@StartDate='{UpdtDetails.StartDate.ToString("MM-dd-yyyy")}'");
                 con.Close();
-                return UptdDetails;
+                return UpdtDetails;
             }
             catch (SqlException sql)
             {

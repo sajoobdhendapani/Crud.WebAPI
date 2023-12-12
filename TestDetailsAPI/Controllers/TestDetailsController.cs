@@ -13,17 +13,17 @@ namespace TestDetailsAPI.Controllers
     [ApiController]
     public class TestDetailsController : ControllerBase
     {
-        private readonly ITestDetailsRepostory TDobj;
+        private readonly ITestDetailsRepostory _tDobj;
         public TestDetailsController()
         {
-            TDobj = new TestDetailsRepostory();
+            _tDobj = new TestDetailsRepostory();
         }
           
         // GET: api/<TestDetailsController>
         [HttpGet]
         public IEnumerable<TestDetail> Get()
         {
-            return TDobj.ReadSP();
+            return _tDobj.ReadSP();
         }
 
         // GET api/<TestDetailsController>/5
@@ -37,21 +37,21 @@ namespace TestDetailsAPI.Controllers
         [HttpPost]
         public void Post([FromBody] TestDetail value)
         {
-            TDobj.InsertSP(value);
+            _tDobj.InsertSP(value);
         }
 
         // PUT api/<TestDetailsController>/5
         [HttpPut("{id}")]
         public void Put(long id, [FromBody] TestDetail value)
         {
-             TDobj.UpdateSP(id,value);
+             _tDobj.UpdateSP(id,value);
         }
 
         // DELETE api/<TestDetailsController>/5
         [HttpDelete("{id}")]
         public void Delete(long id)
         {
-            TDobj.DeleteSP(id);
+            _tDobj.DeleteSP(id);
         }
     }
 }
