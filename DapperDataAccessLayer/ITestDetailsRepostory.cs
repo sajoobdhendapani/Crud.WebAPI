@@ -12,5 +12,6 @@ namespace DapperDataAccessLayer
         public IEnumerable<TestDetail> ReadSP();
         public TestDetail DeleteSP(long Id);
         public TestDetail UpdateSP(long Id, TestDetail UpdtDetails);
+        public TestDetail ReadByNumberSP(long Id);
     }
 }
